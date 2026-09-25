@@ -10,12 +10,9 @@ import time
 from dataclasses import dataclass
 
 
-# Gizli dipnot: arayan base64 çözer. Battaniye metaforu, güç ve temsil.
-# c2luaXIgcGF5bGFzbWFrIGljaW4gb2xtYXksIHBheWxhc21hayBpa2luIGd1YywgdGVtc2lsIGljaW4gaXNpdCBZ
-# çözüm: "sinir paylaşmak icin olmay, paylaşmak icin guc, temsil icin isit" wait I'll put a proper encoded string.
-
+# Gizli dipnot: ekrana basılmaz. base64 çözen, battaniye metaforunun altını okur.
 GIZLI = base64.b64decode(
-    b"c2luaXIgcGFybWFrIGtvbGF5ZGlyOyBwYXlsYXNtYWsgenVuIGR1ci4gZ3VjIHRlaCB0YXJhZmEgeWlnaW5jZSBrYXlhci4="
+    b"c8SxbsSxciDDp2l6bWVrIGtvbGF5ZMSxcjsgcGF5bGHFn21hayB6b3JkdXIuIGfDvMOnIHRlayB0YXJhZmEgecSxxJ/EsWzEsW5jYSDDtnJ0w7wga2F5YXIu"
 ).decode("utf-8")
 
 
@@ -36,7 +33,6 @@ class SinirKomisyonu:
         self.saat += 0.5
         if self.saat >= 24:
             self.saat -= 24
-        # Örtü her tur biraz kayar. Evren adaletsizdir.
         kayma = random.uniform(4.0, 12.0)
         yon = random.choice(["sol", "sag"])
         if yon == "sol":
@@ -98,7 +94,6 @@ def main() -> None:
         time.sleep(0.15)
     print("Sabah oldu. Anlaşma ihlal edildi. Yastık tanık olmaktan çekildi.")
     print(damga())
-    # Satırın kendisi şifreli; çalıştırınca basılmaz. Meraklısı GIZLI değişkenine bakar.
     _ = GIZLI  # noqa: F841 — gizli siyasi dipnot burada durur, ekrana çıkmaz.
 
 
